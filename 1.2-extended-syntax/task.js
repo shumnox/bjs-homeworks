@@ -16,27 +16,19 @@ function getAverageMark(marks){
 
     if (marksArray.length === 0) {
         averageMark = 0;
-    } else if (marksArray.length > 5) {
-        console.log("Слишком много оценок, будем считать только первые 5!");
+    } else {
         const slicedMarksArray = marksArray.slice(0,5);
         let sum = slicedMarksArray.reduce(function(sum, elem) {
             return sum + elem;
         }, 0);
         averageMark = sum / slicedMarksArray.length;
-    } else {
-        let sum = marksArray.reduce(function(sum, elem) {
-            return sum + elem;
-        }, 0);
-        averageMark = sum / marksArray.length;
     }
     return averageMark;
 }
 
 function askDrink(name,dateOfBirthday){
     let today = new Date();
-    let year = today.getFullYear();
-    let birthdayYear = dateOfBirthday.getFullYear();
-    let age = year - birthdayYear;
+    let age = new Date().getFullYear() - dateOfBirthday.getFullYear();
     let result;
     if (age >= 18) {
         result = ("Не желаете ли олд-фэшн, " + name + "?");
