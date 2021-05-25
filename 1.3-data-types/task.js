@@ -24,13 +24,20 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     let bankAmount = amountVal - contributionVal;
     let monthPercent = percentVal / 12;
 
-    let monthAmount = bankAmount * (monthPercent + monthPercent / (((1 + monthPercent)^month) - 1));
+    let monthAmount = bankAmount * (monthPercent + monthPercent / (((1 + monthPercent)**month) - 1));
     let totalAmount = monthAmount * month;
     totalAmount = ( Math.round(totalAmount * 100) / 100 );
     return totalAmount;
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    // return greeting;
+    let greeting;
+    if (name === undefined || name.length === 0) {
+        greeting = "Привет, мир! Меня зовут Аноним."
+        console.log(greeting);
+    } else {
+        greeting = "Привет, мир! Меня зовут " + name + "."
+        console.log(greeting);
+    }
+    return greeting;
 }
